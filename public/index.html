@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Research Portal | Library Services</title>
+    <title>Games - ROBLOX</title>
     
     <script src="/uv/uv.bundle.js"></script>
     <script src="/uv/uv.config.js"></script>
@@ -18,98 +18,141 @@
     </script>
 
     <style>
-        /* Modern GUI Styles */
         body {
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #e3e3e3; /* Classic grey background */
             height: 100vh;
             display: flex;
             flex-direction: column;
+        }
+
+        /* 2016 Blue Header */
+        .header {
+            background-color: #0074bd;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 20px;
+            margin-right: 20px;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Search Bar styled like the 2016 Top Bar */
+        .search-area {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-box {
+            width: 400px;
+            height: 24px;
+            border: 1px solid #ccc;
+            padding: 2px 10px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .search-btn {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-left: none;
+            padding: 0 10px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        /* Main Content Layout */
+        .main-container {
+            display: flex;
+            flex-grow: 1;
             overflow: hidden;
         }
 
-        /* Top Navigation Bar (Stealth Look) */
-        .navbar {
-            background: #2c3e50;
-            color: white;
-            padding: 10px 20px;
+        /* 2016 Sidebar */
+        .sidebar {
+            width: 180px;
+            background-color: white;
+            border-right: 1px solid #ccc;
+            padding-top: 20px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .search-container {
-            display: flex;
+            flex-direction: column;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 5px 15px;
-            border-radius: 20px;
-            transition: 0.3s;
         }
 
-        .search-container:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        input {
-            background: transparent;
-            border: none;
-            color: white;
-            outline: none;
-            width: 300px;
+        .side-link {
+            padding: 8px 20px;
+            color: #333;
+            text-decoration: none;
             font-size: 14px;
         }
 
-        input::placeholder { color: #bdc3c7; }
+        .side-link:hover { background-color: #f2f2f2; }
 
-        button {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 5px 15px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        button:hover { background: #2980b9; }
-
-        /* The Game/Site Window */
+        /* The Game Window (Iframe) */
         #iframeWindow {
             flex-grow: 1;
             border: none;
-            width: 100%;
-            height: 100%;
-            background: white;
+            background-color: white;
+            margin: 10px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
         }
 
-        /* Panic Button Info (Hidden) */
-        .footer-info {
-            font-size: 10px;
-            color: #7f8c8d;
-            padding: 5px 20px;
-            background: #ecf0f1;
-        }
+        /* Panic Key Styling (Hidden) */
+        #panicStatus { display: none; }
     </style>
 </head>
 <body>
 
-    <div class="navbar">
-        <div style="font-weight: bold; letter-spacing: 1px;">DATABASE PORTAL v4.2</div>
-        <div class="search-container">
-            <input type="text" id="urlInput" placeholder="Search archive or enter DOI...">
-            <button id="searchButton">Fetch Data</button>
+    <div class="header">
+        <div class="logo">ROBLOX</div>
+        <div class="nav-links">
+            <span>Games</span>
+            <span>Catalog</span>
+            <span>Develop</span>
+            <span>ROBUX</span>
         </div>
-        <div style="font-size: 12px; opacity: 0.7;">Signed in as: Student_User</div>
+        
+        <div class="search-area">
+            <input type="text" id="urlInput" class="search-box" placeholder="Search Games (Paste URL here)">
+            <button id="searchButton" class="search-btn">🔍</button>
+        </div>
+
+        <div style="margin-left: 20px;">Settings | Logout</div>
     </div>
 
-    <iframe id="iframeWindow"></iframe>
+    <div class="main-container">
+        <div class="sidebar">
+            <a href="#" class="side-link" style="font-weight:bold;">Home</a>
+            <a href="#" class="side-link">Profile</a>
+            <a href="#" class="side-link">Messages</a>
+            <a href="#" class="side-link">Friends</a>
+            <a href="#" class="side-link">Character</a>
+            <a href="#" class="side-link">Inventory</a>
+            <hr style="width: 80%; border: 0.5px solid #eee;">
+            <a href="#" class="side-link" style="color: #0074bd;">Upgrade Now</a>
+        </div>
 
-    <div class="footer-info">
-        Connected to Secure Academic Node. Press [ ' ] for emergency logout.
+        <iframe id="iframeWindow"></iframe>
     </div>
 
     <script>
@@ -117,23 +160,22 @@
         const button = document.getElementById('searchButton');
         const iframe = document.getElementById('iframeWindow');
 
-        // Search Functionality
         button.onclick = function() {
             let url = input.value.trim();
+            if (!url) return;
             if (!url.startsWith('http')) url = 'https://' + url;
             
-            // This tells Ultraviolet to encode the URL and load it
+            // Ultraviolet encoding
             iframe.src = __uv$config.prefix + __uv$config.encodeUrl(url);
         };
 
-        // Panic Key: Press the apostrophe key (') to immediately go to Google Classroom
+        // Panic Key ( ' ) - Redirects to a boring site
         document.addEventListener('keydown', function(e) {
             if (e.key === "'") {
-                window.location.href = "https://classroom.google.com";
+                window.location.href = "https://www.wikipedia.org";
             }
         });
 
-        // Allow Enter key to search
         input.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') button.click();
         });
